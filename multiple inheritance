@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+
+class Student
+{
+protected:
+    int roll_number;
+public:
+    void set_roll_number(int);
+    void get_roll_number();
+};
+void Student :: set_roll_number(int r)
+{
+    roll_number = r;
+}
+void Student :: get_roll_number()
+{
+    cout<<" Roll number is " << roll_number<<endl;
+}
+class Exam
+{
+protected:
+    float math_marks;
+    float physics_marks;
+    float chemistry_marks;
+public:
+    void set_marks(float,float,float);
+    void get_marks();
+};
+void Exam :: set_marks(float m1, float m2, float m3)
+{
+    math_marks = m1;
+    physics_marks = m2;
+    chemistry_marks = m3;
+}
+void Exam :: get_marks()
+{
+    cout<<" Your Maths marks are "<<math_marks<<endl;
+    cout<<" Your Physics marks are "<<physics_marks<<endl;
+    cout<<" Your Chemistry marks are "<<chemistry_marks<<endl;
+}
+class Result : public Student , public Exam
+{
+protected:
+    float percentage;
+public:
+    void display_results()
+    {
+        get_roll_number();
+        get_marks();
+        cout<< "\n Your result is "<< (math_marks +physics_marks + chemistry_marks)/3<<"%"<<endl;
+    }
+};
+int main()
+{
+    Result Priyanka;
+    Priyanka.set_roll_number(191925);
+    Priyanka.set_marks(92.0,95.0,95.0);
+    Priyanka.display_results();
+
+    return 0;
+}
